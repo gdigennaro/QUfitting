@@ -41,9 +41,10 @@ CODE USAGE
   python make_datacubes.py -i sourcename [--resol]
 
 - run QUfitting_map.py
-  the option --docheck controls the pixels where to perform the QU fit (above a certain threshold, --maskthreshold, over the Ricean error in the *polint.fits image)
-  the option --doplots produces all the fitting plots (stored in the ./singlepixels folder; it also produces a compressed folder)
-  the option --ncpu controls the number of CPU used for the fit
+  - the option --docheck controls the pixels where to perform the QU fit (above a certain threshold, --maskthreshold, over the Ricean error in the *polint.fits image)
+  - the option --doplots produces all the fitting plots (stored in the ./singlepixels folder; it also produces a compressed folder)
+  - the option --ncpu controls the number of CPU used for the fit
+  - the option --depol must be one of these: ExtDepol, IntDepol, None
 
   python QUfitting_map.py -i sourcename --depol DEPOL_MODEL [--resol]
 
