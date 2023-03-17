@@ -381,9 +381,9 @@ threshold = args['maskthreshold']
 
 
 if res == '':
-  DATADIR = '/export/data2/AG_Brueggen/digennaro/HighRedshiftClusters/PlanckSZ/JVLA/polarization/'+source+'/None/'
+  DATADIR = './polarization/'+source+'/None/'
 else:
-  DATADIR = '/export/data2/AG_Brueggen/digennaro/HighRedshiftClusters/PlanckSZ/JVLA/polarization/'+source+'/Low/'
+  DATADIR = './polarization/'+source+'/'+res+'/'
 
 
 print ("resolution   :", res)
