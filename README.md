@@ -19,12 +19,14 @@ PACKAGES NECESSARY (to run with python 3.X)
 
 
 FUNCTION USED BY QUfitting.py
+
 - pol_func >> calculate the values and errors (MC simulations) of the polarization fraction and angle given the Stokes I,Q,U fluxes
 - function_plots >> generate the polarisation plots (see Fig. 1 in Di Gennaro+2021, ApJ, 991, 3)
 - function_polarization_MCMC >> functions for models and MCMC fitting
 
 
 IMAGES REQUIRED TO RUN THE QU FIT
+
 In order to run QUfitting_map.py, it is necessary to run pyrmsynth first (https://github.com/mrbell/pyrmsynth); it will produce the preliminary RM map and the averaged total intensity map (not corrected for the Ricean bias) 
 the fit is parallelised on different CPUs (by default 10; if the number of CPUs needs to be changed, modify the option --ncpu)
 
@@ -35,6 +37,7 @@ the fit is parallelised on different CPUs (by default 10; if the number of CPUs 
 
 
 CODE USAGE
+
 - run make_datacubes.py to create datacubes for Stokes Q, U and I;
   provide the cluster name and, if needed, the resolution of the observation
 
