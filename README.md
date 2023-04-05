@@ -53,6 +53,7 @@ CODE USAGE
 
 
 CITATION:
+
 If you make use of this code in its original form or portions of it, please cite:
 Di Gennaro G. et al., Downstream Depolarization in the Sausage Relic: A 1-4 GHz Very Large Array Study, The Astrophysical Journal, Volume 911, 2021. https://doi:10.3847/1538-4357/abe620.
 
