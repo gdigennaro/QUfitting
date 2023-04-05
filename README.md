@@ -27,7 +27,8 @@ FUNCTION USED BY QUfitting.py
 
 IMAGES REQUIRED TO RUN THE QU FIT
 
-In order to run QUfitting_map.py, it is necessary to run pyrmsynth first (https://github.com/mrbell/pyrmsynth); it will produce the preliminary RM map and the averaged total intensity map (not corrected for the Ricean bias) 
+In order to run QUfitting_map.py, it is necessary to run pyrmsynth first (https://github.com/mrbell/pyrmsynth) or any other tool to get a preliminary version of the RM map and the averaged total polarisation map;
+
 the fit is parallelised on different CPUs (by default 10; if the number of CPUs needs to be changed, modify the option --ncpu)
 
 - pyrmsynth outputs needed: 
