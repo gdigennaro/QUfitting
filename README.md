@@ -2,13 +2,13 @@ THIS FILE SUMMARISES THE STEPS REQUIRED FOR THE POLARISATION FITTING
 
 The QUfitting_map.py software works on sets of FITS files only. 
 Stokes I, Q and U files are located in folders (name must be stokes_i, stokes_q and stokes_u, respectively) 
-containing FITS file of a single sub-band with a given Delta freq, smoother at the same resolution (*-image.smooth.regrid.fits). 
+containing FITS file of a single sub-band with a given Delta freq, smoothed at the same resolution (*-image.smooth.regrid.fits). 
 Running the software make_datacubes.py stacks the single Stokes folders into single data cubes 
 and generates a text file 'lambda_sq.txt' with the squared wavelengths (column 0) and the corresponding frequencies (column 1);
 then QUfitting_map.py perform QU fitting along the wavelength band.
 
 
-PACKAGES NECESSARY (to run with python 3.X)
+NECESSARY PACKAGES (to run with python 3.X)
 - numpy
 - scipy
 - pp
