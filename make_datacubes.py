@@ -13,7 +13,7 @@ from astropy.io.fits import Header
 import argparse
 import sys
 
-def makedatacubes(imagelistI, imagelistQ, imagelistU, xmin, xmax, ymin, ymax, res):
+def makedatacubes(imagelistI, imagelistQ, imagelistU, xmin, xmax, ymin, ymax):
   # WRITE CUBES
   bandwidth = len(imagelistQ)
   print ("number of channels: ", bandwidth)
@@ -52,7 +52,7 @@ def makedatacubes(imagelistI, imagelistQ, imagelistU, xmin, xmax, ymin, ymax, re
     cubeQ[:,i,:,:] = Q[:,:,int(ymin):int(ymax),int(xmin):int(xmax)]
 
     i=i+1
-  fits.writeto(DATADIR + 'Qdatacube'+res+'.fits', cubeQ, hdu[0].header, overwrite=True)
+  fits.writeto(DATADIR + 'Qdatacube.fits', cubeQ, hdu[0].header, overwrite=True)
 
   print ("Doing U datacube...")
   i=0
@@ -61,7 +61,7 @@ def makedatacubes(imagelistI, imagelistQ, imagelistU, xmin, xmax, ymin, ymax, re
     cubeU[:,i,:,:] = U[:,:,int(ymin):int(ymax),int(xmin):int(xmax)]
 
     i=i+1
-  fits.writeto(DATADIR + 'Udatacube'+res+'.fits', cubeU, hdu[0].header, overwrite=True)
+  fits.writeto(DATADIR + 'Udatacube.fits', cubeU, hdu[0].header, overwrite=True)
 
   print ("Doing I datacube...")
   i=0
@@ -76,7 +76,7 @@ def makedatacubes(imagelistI, imagelistQ, imagelistU, xmin, xmax, ymin, ymax, re
     freq[i] = hdu_lambda.header['CRVAL3']/1.e9
     
     i=i+1
-  fits.writeto(DATADIR + 'Idatacube'+res+'.fits', cubeI, hdu[0].header, overwrite=True)
+  fits.writeto(DATADIR + 'Idatacube.fits', cubeI, hdu[0].header, overwrite=True)
   print (lambda_sq, "m^2")
   np.savetxt(DATADIR + 'lambda_sq.txt', np.transpose([lambda_sq, freq]))
 
@@ -84,20 +84,14 @@ def makedatacubes(imagelistI, imagelistQ, imagelistU, xmin, xmax, ymin, ymax, re
 
 
 ## MAIN SCRIPT
-parser = argparse.ArgumentParser(description='Make IQU FITS cubes')
-
+parser = argparse.ArgumentParser(description='Make IQU FITS cubes. To run in the folder where the stokes_* folders are')
 parser.add_argument('-i','--sourcename', help='Name of the region to fit to produce the polarization parameter maps', type=str)
-parser.add_argument('--resol', help='Taper of the observations (e.g. TAPER50kpc)', required=False, type=str)
 
 args = vars(parser.parse_args())
 clustername = args['sourcename']
-res         = args['resol']
 
-if not args['resol']:
-  res = ''
-  DATADIR = '/export/data2/AG_Brueggen/digennaro/HighRedshiftClusters/PlanckSZ/JVLA/polarization/'+clustername+'/None/'
-else:  
-  DATADIR = '/export/data2/AG_Brueggen/digennaro/HighRedshiftClusters/PlanckSZ/JVLA/polarization/'+clustername+'/Low/'
+DATADIR = "./"
+
 path_stokesQ = DATADIR + 'stokes_q/'
 path_stokesU = DATADIR + 'stokes_u/'
 path_stokesI = DATADIR + 'stokes_i/'
@@ -119,7 +113,6 @@ else:
   dx, dy = hdr['CDELT2']*hdr['NAXIS1'], hdr['CDELT2']*hdr['NAXIS2']
 
   print (clustername)
-  print ('Resolution:', res)
   print ("Right Ascension :",360+ra)
   print ("Declination     :", dec)
   print ("Size R.A. [deg] :", dx)
@@ -132,4 +125,4 @@ else:
   xmin, ymin = w.wcs_world2pix(coords[0]+(width[0]/2)/np.cos(coords[1]*np.pi/180.), coords[1]-width[1]/2, 1)
   xmax, ymax = w.wcs_world2pix(coords[0]-(width[0]/2)/np.cos(coords[1]*np.pi/180.), coords[1]+width[1]/2, 1)  
 
-  makedatacubes(imagelistI, imagelistQ, imagelistU, xmin, xmax, ymin, ymax, res)
+  makedatacubes(imagelistI, imagelistQ, imagelistU, xmin, xmax, ymin, ymax)
