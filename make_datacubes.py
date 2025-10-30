@@ -84,7 +84,7 @@ def makedatacubes(imagelistI, imagelistQ, imagelistU, xmin, xmax, ymin, ymax, re
 
 
 ## MAIN SCRIPT
-parser = argparse.ArgumentParser(description='Make QU fit pixel per pixel using MCMC for the uncertainties on the total intensity polarization paramenters (I0, a, b; p0, chi0, RM, sigmaRM)')
+parser = argparse.ArgumentParser(description='Make IQU FITS cubes')
 
 parser.add_argument('-i','--sourcename', help='Name of the region to fit to produce the polarization parameter maps', type=str)
 parser.add_argument('--resol', help='Taper of the observations (e.g. TAPER50kpc)', required=False, type=str)
